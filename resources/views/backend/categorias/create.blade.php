@@ -1,6 +1,7 @@
     <div class="container mt-5">
         <div class="col-md-6">
-            <form action="{{ route('/categorias/create') }}" method="post">
+            {{-- <form action="{{ route('/categorias/create') }}" method="post"> --}}
+            <form action="" method="post">
                 <div class="form-group">
                     <label for="">Categoria</label>
                     <input type="text" class="form-control" name="categoria" id="categoria" aria-describedby="helpId" placeholder="">

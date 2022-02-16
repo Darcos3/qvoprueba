@@ -7,58 +7,20 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Acerca de la prueba
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+La prueba consistia en realizar los siguientes procesos:
+    - Crear dos CRUD, uno para productos y otro para categorias
+    - Relacionarlos para consultar producto y conocer categoria
+    - Creacion o delimitacion de rutas por rol de usuario
+        - El usuario administrador podia administrar categorias y productos
+        - El usuario cliente solo podia ver los productos
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Inconvenientes con los cuales me tope en el desarrollo
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+La prueba la hice con laravel 8, la ayuda por terminal sigue siendo la misma, solo que ha cambiado un poco
+antes habia probado con laravel 5, la ayuda para crear el auth, incluidos el controlador, rutas y vistas ya no se obtienen con make:auth sino ahora hubo que instalar por medio de composer el paquete de laravel/ui y ahi si poder crear el auth.
 
-## Learning Laravel
+Otro problema con el que me tope, es con las rutas. Segun los fundamentos con laravel 5, uno podia crear dichas rutas con una linea similar a Productos::routes(); o en este caso tambien Categorias::routes(); y ahi se tomaba todas las rutas que se hayan asignado en el controlador, similar a como se presenta la línea 25 en el archivo de rutas para web. Pero en ningun momento creo que me funcionó. Haciendo uso del comando php artisan route:list se puede ver que las rutas si se han establecido pero no se las puede usar dentro de la plantilla, al intentar colocarla {{ route('categorias') }} o {{ route('/categorias') }} sale que la ruta no ha sido declarada, pero si la ruta se la intenta agregar en el campo para buscar por la url, ahi si mas o menos dejaba navegar. Dejé comentada la linea del action en la vista de backend/categorias/create como referencia.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+El resto de los elementos si no los alcance a desarrollar.
