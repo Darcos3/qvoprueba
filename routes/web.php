@@ -1,11 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Models\Categorias;
-use App\Http\Models\Productos;
-use App\Http\Controllers\CategoriasController;
-use App\Http\Controllers\ProductosController;
-
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ProductoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,28 +14,19 @@ use App\Http\Controllers\ProductosController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->to('/login');
+});
+Route::get('/home', function(){
+    return redirect()->to('/producto');
 });
 
-Auth::routes();
-// Categorias::routes();
-// Productos::routes();
+Route::resource('categoria', CategoriaController::class)->middleware('auth');
+Route::resource('producto', ProductoController::class);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//Route::get('/categorias', [CategoriasController::class, 'index' ]);
-
-Route::get('/categorias', [App\Http\Controllers\CategoriasController::class, 'index']);
-Route::get('/categorias/crear', [App\Http\Controllers\CategoriasController::class, 'create']);
-Route::post('/categorias/guardar', [App\Http\Controllers\CategoriasController::class, 'store']);
-Route::post('/categorias/actualizar/{id}', [App\Http\Controllers\CategoriasController::class, 'update']);
-Route::post('/categorias/eliminar/{id}', [App\Http\Controllers\CategoriasController::class, 'destoy']);
-
-
-Route::get('/productos', [App\Http\Controllers\ProductosController::class, 'index']);
-Route::get('/productos/crear', [App\Http\Controllers\ProductosController::class, 'create']);
-Route::post('/productos/guardar', [App\Http\Controllers\ProductosController::class, 'store']);
-Route::post('/productos/actualizar/{id}', [App\Http\Controllers\ProductosController::class, 'update']);
-Route::post('/productos/eliminar/{id}', [App\Http\Controllers\ProductosController::class, 'destroy']);
-
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/producto', function(){
+//     return redirect()->to('/productos')->middleware('gest');
+// });

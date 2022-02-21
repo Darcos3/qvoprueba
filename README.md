@@ -18,9 +18,8 @@ La prueba consistia en realizar los siguientes procesos:
 
 ## Inconvenientes con los cuales me tope en el desarrollo
 
-La prueba la hice con laravel 8, la ayuda por terminal sigue siendo la misma, solo que ha cambiado un poco
-antes habia probado con laravel 5, la ayuda para crear el auth, incluidos el controlador, rutas y vistas ya no se obtienen con make:auth sino ahora hubo que instalar por medio de composer el paquete de laravel/ui y ahi si poder crear el auth.
+- Con el tema de las relaciones, la relacion de categoria en un producto, declare la funcion dentro del modelo, sin embargo al llamar dicha funcion dentro de la plantilla blade, me traia todo la informacion y se mostraba mal.
 
-Otro problema con el que me tope, es con las rutas. Segun los fundamentos con laravel 5, uno podia crear dichas rutas con una linea similar a Productos::routes(); o en este caso tambien Categorias::routes(); y ahi se tomaba todas las rutas que se hayan asignado en el controlador, similar a como se presenta la línea 25 en el archivo de rutas para web. Pero en ningun momento creo que me funcionó. Haciendo uso del comando php artisan route:list se puede ver que las rutas si se han establecido pero no se las puede usar dentro de la plantilla, al intentar colocarla {{ route('categorias') }} o {{ route('/categorias') }} sale que la ruta no ha sido declarada, pero si la ruta se la intenta agregar en el campo para buscar por la url, ahi si mas o menos dejaba navegar. Dejé comentada la linea del action en la vista de backend/categorias/create como referencia.
+- Me falto desarrollar el tema de los roles, intente con el middleware de auth cerrar algunas rutas, como por ejemplo las categorias.
 
-El resto de los elementos si no los alcance a desarrollar.
+La idea mia era usar el middleware guest para abrir la ruta de productos.index y con el middleware auth cerrar las demas rutas. No me dió resultado, sin embargo las deje comentada esas lineas.
